@@ -3,6 +3,7 @@ using UnityEngine;
 using ScoreboardAttributes;
 using Photon.Pun;
 using GorillaNetworking;
+using Photon.Realtime;
 
 namespace DisplayNames
 {
@@ -16,13 +17,16 @@ namespace DisplayNames
             Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { Main.Instance.ChannelId, Main.Instance.CustomName } });
         }
         
-        [HarmonyPatch(typeof(GorillaPlayerScoreboardLine), "UpdateLine"), HarmonyPostfix]
-        private static void ScoreboardInitialized(GorillaPlayerScoreboardLine __instance)
+        [HarmonyPatch(typeof(GorillaScoreBoard), "RedrawPlayerLines"), HarmonyPostfix]
+        private static void RedrawLines(GorillaScoreBoard __instance)
         {
-            if (!__instance.linePlayer.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
-                return;
-            __instance.playerName.text = (string)value;
-            ScoreboardAttributes.PlayerTexts.RegisterAttribute(__instance.linePlayer.NickName, __instance.linePlayer);
+            foreach (GorillaPlayerScoreboardLine line in __instance.lines)
+            {
+                if (!line.linePlayer.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
+                    return;
+                line.playerName.text = (string)value;
+                ScoreboardAttributes.PlayerTexts.RegisterAttribute(line.linePlayer.NickName, line.linePlayer);
+            }
         }
 
         [HarmonyPatch(typeof(VRRig), "InitializeNoobMaterialLocal"), HarmonyPostfix]

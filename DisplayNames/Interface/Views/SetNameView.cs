@@ -83,6 +83,7 @@ namespace DisplayNames.Interface.Views
                 Main.Instance.CustomName = textInputHandler.Text;
                 PlayerPrefs.SetString("Nickname", textInputHandler.Text);
                 Photon.Pun.PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { Main.Instance.ChannelId, Main.Instance.CustomName } });
+                BaseGameInterface.SetColor(BaseGameInterface.GetColor());
             }
             else if (key == EKeyboardKey.Option1)
             {
