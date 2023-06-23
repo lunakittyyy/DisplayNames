@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZuYpv3r/LyZjr2xBd4Cn9YjZFcbmNkfGCmse7fgq92nfk36y7+qehNDfA2YFwXtJKfK6hqI0PeQEiaeI00Tl6w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kaylie\\Documents\\GitHub\\DisplayNames\\DisplayNames\\DisplayNames.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kaylie\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Kaylie\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
