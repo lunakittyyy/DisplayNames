@@ -24,7 +24,7 @@
       <HintPath>$(BepInExAssemblyPath)\BepInEx.Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Bepinject">
-      <HintPath>..\..\..\..\..\..\Program Files\Oculus\Software\Software\another-axiom-gorilla-tag\BepInEx\plugins\Bepinject-Auros\Bepinject.dll</HintPath>
+      <HintPath>$(PluginsPath)\Bepinject-Auros\Bepinject.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
       <HintPath>$(GameAssemblyPath)\Cinemachine.dll</HintPath>
@@ -33,7 +33,7 @@
       <HintPath>$(GameAssemblyPath)\clipper_library.dll</HintPath>
     </Reference>
     <Reference Include="ComputerInterface">
-      <HintPath>..\..\..\..\..\..\Program Files\Oculus\Software\Software\another-axiom-gorilla-tag\BepInEx\plugins\ComputerInterface\ComputerInterface.dll</HintPath>
+      <HintPath>$(PluginsPath)\ComputerInterface\ComputerInterface.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security">
       <HintPath>$(GameAssemblyPath)\Mono.Security.dll</HintPath>
@@ -69,7 +69,7 @@
       <HintPath>$(GameAssemblyPath)\PlayFab.dll</HintPath>
     </Reference>
     <Reference Include="ScoreboardAttributes">
-      <HintPath>..\..\..\..\..\..\Program Files\Oculus\Software\Software\another-axiom-gorilla-tag\BepInEx\plugins\ScoreboardAttributes.dll</HintPath>
+      <HintPath>$(PluginsPath)\ScoreboardAttributes\ScoreboardAttributes.dll</HintPath>
     </Reference>
     <Reference Include="System.EnterpriseServices">
       <HintPath>$(GameAssemblyPath)\System.EnterpriseServices.dll</HintPath>
@@ -294,7 +294,7 @@
       <HintPath>$(GameAssemblyPath)\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Zenject">
-      <HintPath>..\..\..\..\..\..\Program Files\Oculus\Software\Software\another-axiom-gorilla-tag\BepInEx\plugins\Extenject\Zenject.dll</HintPath>
+      <HintPath>$(PluginsPath)\Extenject\Zenject.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
