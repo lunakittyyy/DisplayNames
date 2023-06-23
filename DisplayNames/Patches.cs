@@ -38,29 +38,34 @@ namespace DisplayNames
                     continue;
 
                 string playerText = !line.linePlayer.IsLocal ? (string)value : Main.Instance.CustomName;
-                if (playerText.Length > 12)
-                    playerText = playerText.Substring(0, 10) + "..";
 
-                line.playerName.text = playerText;
+                line.playerName.text = TruncateString(playerText);
                 ScoreboardAttributes.PlayerTexts.RegisterAttribute(line.linePlayer.NickName, line.linePlayer);
             }
         }
 
-        [HarmonyPatch(typeof(VRRig), "Start"), HarmonyPostfix]
-        private async static void VRRigPatch(VRRig __instance)
+        [HarmonyPatch(typeof(VRRig), "InitializeNoobMaterialLocal"), HarmonyPostfix]
+        private static void VRRigPatch(VRRig __instance)
         {
-            await Task.Delay(400);
             if (!__instance.isOfflineVRRig) 
             { 
                 PhotonView VRRigPhotonView = (PhotonView)AccessTools.Field(__instance.GetType(), "photonView").GetValue(__instance);
                 if (!VRRigPhotonView.Owner.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
                     return;
-                __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName((string)value) ? (string)value : "Bitch";
+                __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName(TruncateString((string)value)) ? TruncateString((string)value) : "Bitch";
             }
             else
             {
-                __instance.playerText.text = Main.Instance.CustomName;
+                __instance.playerText.text = TruncateString(Main.Instance.CustomName);
             }
+        }
+        
+        private static string TruncateString(string str)
+        {
+            if (str.Length > Main.MaxCharacters)
+            {
+                return str.Substring(0, Main.MaxCharacters);
+            } else return str;
         }
     }
 }

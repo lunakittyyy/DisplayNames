@@ -15,7 +15,6 @@ namespace DisplayNames.Behaviours
                     return;
 
                 Main.Instance.manualLogSource.LogInfo($"Player {targetPlayer.NickName} has changed their display name to {value}");
-                Patches.scoreboardInstance.RedrawPlayerLines();
             } catch {}
         }
     }
