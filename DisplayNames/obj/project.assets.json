@@ -180,24 +180,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kaylie\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\devel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kaylie\\Documents\\GitHub\\DisplayNames\\DisplayNames\\DisplayNames.csproj",
+      "projectUniqueName": "C:\\Users\\devel\\OneDrive\\Pictures\\Documents\\GitHub\\DisplayNames\\DisplayNames\\DisplayNames.csproj",
       "projectName": "DisplayNames",
-      "projectPath": "C:\\Users\\Kaylie\\Documents\\GitHub\\DisplayNames\\DisplayNames\\DisplayNames.csproj",
-      "packagesPath": "C:\\Users\\Kaylie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kaylie\\Documents\\GitHub\\DisplayNames\\DisplayNames\\obj\\",
+      "projectPath": "C:\\Users\\devel\\OneDrive\\Pictures\\Documents\\GitHub\\DisplayNames\\DisplayNames\\DisplayNames.csproj",
+      "packagesPath": "C:\\Users\\devel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\devel\\OneDrive\\Pictures\\Documents\\GitHub\\DisplayNames\\DisplayNames\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Kaylie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\devel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

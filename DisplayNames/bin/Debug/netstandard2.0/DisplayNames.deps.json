@@ -942,6 +942,14 @@
           }
         }
       },
+      "SteamVR/0.0.0.0": {
+        "runtime": {
+          "SteamVR.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "Backtrace.Unity/0.0.0.0": {
         "runtime": {
           "Backtrace.Unity.dll": {
@@ -953,6 +961,14 @@
       "Zenject-usage/0.0.0.0": {
         "runtime": {
           "Zenject-usage.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Unity.TextMeshPro/0.0.0.0": {
+        "runtime": {
+          "Unity.TextMeshPro.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -995,6 +1011,14 @@
           "Sirenix.Utilities.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Valve.Newtonsoft.Json/9.0.0.0": {
+        "runtime": {
+          "Valve.Newtonsoft.Json.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.1.19813"
           }
         }
       }
@@ -1535,12 +1559,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "SteamVR/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Backtrace.Unity/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "Zenject-usage/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.TextMeshPro/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1566,6 +1600,11 @@
       "sha512": ""
     },
     "Sirenix.Utilities/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Valve.Newtonsoft.Json/9.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
