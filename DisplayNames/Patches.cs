@@ -3,8 +3,6 @@ using UnityEngine;
 using ScoreboardAttributes;
 using Photon.Pun;
 using GorillaNetworking;
-using Photon.Realtime;
-using System.Threading.Tasks;
 
 namespace DisplayNames
 {
@@ -40,7 +38,7 @@ namespace DisplayNames
                 string playerText = !line.linePlayer.IsLocal ? (string)value : Main.Instance.CustomName;
 
                 line.playerName.text = TruncateString(playerText);
-                ScoreboardAttributes.PlayerTexts.RegisterAttribute(line.linePlayer.NickName, line.linePlayer);
+                PlayerTexts.RegisterAttribute(line.linePlayer.NickName, line.linePlayer);
             }
         }
 

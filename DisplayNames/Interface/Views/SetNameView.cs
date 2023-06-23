@@ -153,6 +153,9 @@ namespace DisplayNames.Interface.Views
                 case EKeyboardKey.L:
                     textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + '"';
                     return;
+                case EKeyboardKey.M:
+                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "/";
+                    return;
             }
         }
     }
