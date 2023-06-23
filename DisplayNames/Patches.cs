@@ -81,8 +81,9 @@ namespace DisplayNames
         [HarmonyPatch(typeof(VRRig), "InitializeNoobMaterialLocal"), HarmonyPostfix]
         private static void VRRigPatch(VRRig __instance)
         {
+            
             if (!__instance.isOfflineVRRig) 
-            { 
+            {
                 PhotonView VRRigPhotonView = (PhotonView)AccessTools.Field(__instance.GetType(), "photonView").GetValue(__instance);
                 if (!VRRigPhotonView.Owner.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
                     return;
