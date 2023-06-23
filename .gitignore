@@ -391,3 +391,4 @@ FodyWeavers.xsd
 .vs/DisplayNames/DesignTimeBuild/.dtbcache.v2
 *.v2
 .vs/DisplayNames/v17/.suo
+DisplayNames/bin/Debug/netstandard2.0/DisplayNames.dll

@@ -5,6 +5,7 @@ using Photon.Pun;
 using GorillaNetworking;
 using Photon.Realtime;
 using UnityEngine.UI;
+using ComputerInterface.ViewLib;
 
 namespace DisplayNames
 {
@@ -20,7 +21,7 @@ namespace DisplayNames
         }
         
         // should we be rewriting the entire redrawplayerlines method?
-        // this is the easiest way to modify the playerlines of the string
+        // this is the easiest way to modify the relevant parts of the string
         // as theyre added rather than trying to manipulate it afterwards
         // seems invasive but this just handles UI elements so we should be fine
         [HarmonyPatch(typeof(GorillaScoreBoard), "RedrawPlayerLines"), HarmonyPrefix]
@@ -40,9 +41,9 @@ namespace DisplayNames
                         Text text = __instance.boardText;
                         if (__instance.lines[i].linePlayer.CustomProperties.ContainsKey(Main.Instance.ChannelId))
                         {
-                            if (GorillaComputer.instance.CheckAutoBanListForName((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId])) 
+                            if (GorillaComputer.instance.CheckAutoBanListForName(TruncateString((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId]))) 
                             { 
-                                text.text = text.text + "\n " + __instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId];
+                                text.text = text.text + "\n " + TruncateString((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId]);
                             } else { text.text = text.text + "\n " + "Bitch"; }
                             ScoreboardAttributes.PlayerTexts.RegisterAttribute(__instance.lines[i].linePlayer.NickName, __instance.lines[i].linePlayer);
                         }
@@ -87,12 +88,20 @@ namespace DisplayNames
                 PhotonView VRRigPhotonView = (PhotonView)AccessTools.Field(__instance.GetType(), "photonView").GetValue(__instance);
                 if (!VRRigPhotonView.Owner.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
                     return;
-                __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName((string)value) ? (string)value : "Bitch";
+                __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName(TruncateString((string)value)) ? TruncateString((string)value) : "Bitch";
             }
             else
             {
-                __instance.playerText.text = Main.Instance.CustomName;
+                __instance.playerText.text = TruncateString(Main.Instance.CustomName);
             }
+        }
+
+        private static string TruncateString(string str)
+        {
+            if (str.Length > Main.MaxCharacters)
+            {
+                return str.Substring(0, Main.MaxCharacters);
+            } else return str;
         }
     }
 }

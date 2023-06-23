@@ -78,7 +78,7 @@ namespace DisplayNames.Interface.Views
                 {
                     HandleKeyToSpecial(key);
                 }
-                if (textInputHandler.Text.Length >= Main.MaxCharacters) 
+                if (textInputHandler.Text.Length > Main.MaxCharacters) 
                 {
                     textInputHandler.Text = textInputHandler.Text.Substring(0, Main.MaxCharacters);
                 }
