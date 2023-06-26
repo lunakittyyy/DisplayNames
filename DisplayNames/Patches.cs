@@ -44,7 +44,7 @@ namespace DisplayNames
                                 text.text = text.text + "\n " + TruncateString((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId]);
                             }
                             else { text.text = text.text + "\n " + "Bitch"; }
-                            PlayerTexts.RegisterAttribute(__instance.lines[i].linePlayer.NickName, __instance.lines[i].linePlayer);
+                            PlayerTexts.RegisterAttribute(TruncateString(__instance.lines[i].linePlayer.NickName), __instance.lines[i].linePlayer);
                         }
                         else
                         {
