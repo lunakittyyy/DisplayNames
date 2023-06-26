@@ -20,6 +20,8 @@ namespace DisplayNames
 
         // experimental support for using actual scoreboard lines rather than
         // a replacement string builder lives on the playerlines branch.
+        // For now a replacement string builder is less buggy and looks
+        // more like the base game scoreboard so that's what I'm using
         [HarmonyPatch(typeof(GorillaScoreBoard), "RedrawPlayerLines"), HarmonyPrefix]
         private static bool RedrawLines(GorillaScoreBoard __instance)
         {
@@ -98,8 +100,7 @@ namespace DisplayNames
             if (str.Length > Main.MaxCharacters)
             {
                 return str.Substring(0, Main.MaxCharacters);
-            }
-            else return str;
+            } else return str;
         }
     }
 }
