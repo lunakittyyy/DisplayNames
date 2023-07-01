@@ -4,6 +4,7 @@ using ScoreboardAttributes;
 using Photon.Pun;
 using GorillaNetworking;
 using UnityEngine.UI;
+using Photon.Realtime;
 
 namespace DisplayNames
 {
@@ -81,18 +82,23 @@ namespace DisplayNames
         [HarmonyPatch(typeof(VRRig), "InitializeNoobMaterialLocal"), HarmonyPostfix]
         private static void VRRigPatch(VRRig __instance)
         {
+            var creator = Traverse.Create(__instance).Field("creator").GetValue() as Player;
+            if (GorillaGameManager.instance != null && GorillaGameManager.instance.FindVRRigForPlayer(creator))
+            {
+                if (!__instance.isOfflineVRRig)
+                {
+                    PhotonView VRRigPhotonView = (PhotonView)AccessTools.Field(__instance.GetType(), "photonView").GetValue(__instance);
+                    if (!VRRigPhotonView.Owner.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
+                        return;
+                    __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName(TruncateString((string)value)) ? TruncateString((string)value) : "Bitch";
+                }
+                else
+                    __instance.playerText.text = TruncateString(Main.Instance.CustomName);
+                return;
+            }
 
-            if (!__instance.isOfflineVRRig)
-            {
-                PhotonView VRRigPhotonView = (PhotonView)AccessTools.Field(__instance.GetType(), "photonView").GetValue(__instance);
-                if (!VRRigPhotonView.Owner.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
-                    return;
-                __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName(TruncateString((string)value)) ? TruncateString((string)value) : "Bitch";
-            }
-            else
-            {
+            if (__instance.isOfflineVRRig)
                 __instance.playerText.text = TruncateString(Main.Instance.CustomName);
-            }
         }
 
         private static string TruncateString(string str)
