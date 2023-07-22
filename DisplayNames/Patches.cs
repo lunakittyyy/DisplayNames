@@ -4,6 +4,7 @@ using ScoreboardAttributes;
 using Photon.Pun;
 using GorillaNetworking;
 using UnityEngine.UI;
+using DisplayNames.Utils;
 
 namespace DisplayNames
 {
@@ -39,12 +40,12 @@ namespace DisplayNames
                         Text text = __instance.boardText;
                         if (__instance.lines[i].linePlayer.CustomProperties.ContainsKey(Main.Instance.ChannelId))
                         {
-                            if (GorillaComputer.instance.CheckAutoBanListForName(TruncateString((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId])))
+                            if (GorillaComputer.instance.CheckAutoBanListForName(StringTools.TruncateString((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId])))
                             {
-                                text.text = text.text + "\n " + TruncateString((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId]);
+                                text.text = text.text + "\n " + StringTools.TruncateString((string)__instance.lines[i].linePlayer.CustomProperties[Main.Instance.ChannelId]);
                             }
                             else { text.text = text.text + "\n " + "Bitch"; }
-                            PlayerTexts.RegisterAttribute(TruncateString(__instance.lines[i].linePlayer.NickName), __instance.lines[i].linePlayer);
+                            PlayerTexts.RegisterAttribute(StringTools.TruncateString(__instance.lines[i].linePlayer.NickName), __instance.lines[i].linePlayer);
                         }
                         else
                         {
@@ -84,23 +85,15 @@ namespace DisplayNames
 
             if (!__instance.isOfflineVRRig)
             {
-                PhotonView VRRigPhotonView = (PhotonView)AccessTools.Field(__instance.GetType(), "photonView").GetValue(__instance);
+                PhotonView VRRigPhotonView = RigTools.GetViewFromRig(__instance);
                 if (!VRRigPhotonView.Owner.CustomProperties.TryGetValue(Main.Instance.ChannelId, out object value))
                     return;
-                __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName(TruncateString((string)value)) ? TruncateString((string)value) : "Bitch";
+                __instance.playerText.text = GorillaComputer.instance.CheckAutoBanListForName(StringTools.TruncateString((string)value)) ? StringTools.TruncateString((string)value) : "Bitch";
             }
             else
             {
-                __instance.playerText.text = TruncateString(Main.Instance.CustomName);
+                __instance.playerText.text = StringTools.TruncateString(Main.Instance.CustomName);
             }
-        }
-
-        private static string TruncateString(string str)
-        {
-            if (str.Length > Main.MaxCharacters)
-            {
-                return str.Substring(0, Main.MaxCharacters);
-            } else return str;
         }
     }
 }

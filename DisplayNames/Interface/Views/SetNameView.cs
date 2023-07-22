@@ -4,6 +4,7 @@ using ComputerInterface.ViewLib;
 using System;
 using System.Text;
 using UnityEngine;
+using DisplayNames.Utils;
 
 namespace DisplayNames.Interface.Views
 {
@@ -76,7 +77,7 @@ namespace DisplayNames.Interface.Views
                 }
                 if (SpecialLock)
                 {
-                    HandleKeyToSpecial(key);
+                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + StringTools.AlphaToSpecial(keyString.ToUpper());
                 }
                 if (textInputHandler.Text.Length > Main.MaxCharacters) 
                 {
@@ -105,57 +106,6 @@ namespace DisplayNames.Interface.Views
             {
                 SpecialLock = !SpecialLock;
                 CapsLock = false;
-            }
-        }
-        private void HandleKeyToSpecial(EKeyboardKey key)
-        {
-            switch (key)
-            {
-                case EKeyboardKey.NUM1:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "!";
-                    return;
-                case EKeyboardKey.NUM2:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "@";
-                    return;
-                case EKeyboardKey.NUM3:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "#";
-                    return;
-                case EKeyboardKey.NUM4:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "$";
-                    return;
-                case EKeyboardKey.NUM5:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "%";
-                    return;
-                case EKeyboardKey.NUM6:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "^";
-                    return;
-                case EKeyboardKey.NUM7:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "&";
-                    return;
-                case EKeyboardKey.NUM8:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "*";
-                    return;
-                case EKeyboardKey.NUM9:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "(";
-                    return;
-                case EKeyboardKey.NUM0:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + ")";
-                    return;
-                case EKeyboardKey.H:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + ":";
-                    return;
-                case EKeyboardKey.J:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + ";";
-                    return;
-                case EKeyboardKey.K:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "'";
-                    return;
-                case EKeyboardKey.L:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + '"';
-                    return;
-                case EKeyboardKey.M:
-                    textInputHandler.Text = textInputHandler.Text.Remove(textInputHandler.Text.Length - 1, 1) + "/";
-                    return;
             }
         }
     }

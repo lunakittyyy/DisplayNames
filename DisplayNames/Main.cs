@@ -10,7 +10,7 @@ namespace DisplayNames
         internal const string
             ID = "luna.displaynames",
             NAME = "Display Names",
-            VERSION = "1.0.0";
+            VERSION = "1.1.0";
 
         internal const int MaxCharacters = 20;
         internal static Main Instance;
